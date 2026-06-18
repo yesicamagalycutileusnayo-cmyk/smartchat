@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatbot Emocional — SmartChat</title>
+  <meta name="description" content="Chatbot de apoyo emocional inteligente de SmartChat." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/chatbot.css" />
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+<div class="chatbot-layout">
+
+  <!-- Overlay móvil sidebar principal -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ══════════════════════════════════════
+       SIDEBAR PRINCIPAL (Dashboard Nav)
+  ═══════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Menú principal">
+    <a href="../index.html" class="sidebar-brand">
+      <div class="sidebar-logo-icon">💬</div>
+      <span class="sidebar-logo-text">SmartChat</span>
+    </a>
+    <nav class="sidebar-nav">
+      <span class="sidebar-section-label">Principal</span>
+      <a href="dashboard.html" class="sidebar-link" id="nav-home">
+        <div class="link-icon">🏠</div>
+        <span>Inicio</span>
+      </a>
+      <a href="chatbot.html" class="sidebar-link active" id="nav-chat">
+        <div class="link-icon">💬</div>
+        <span>Chatbot</span>
+      </a>
+      <a href="documentacion.html" class="sidebar-link" id="nav-docs">
+        <div class="link-icon">📚</div>
+        <span>Documentación</span>
+      </a>
+      <span class="sidebar-section-label" style="margin-top:16px;">Config</span>
+      <button class="sidebar-link" data-action="theme" id="themeToggle" style="width:100%;background:none;border:none;cursor:pointer;">
+        <div class="link-icon">🌙</div>
+        <span>Cambiar tema</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">
+          <span class="user-avatar-letter">A</span>
+        </div>
+        <div class="user-info">
+          <div class="user-name" id="sidebarUserName">Administrador</div>
+          <div class="user-role">admin@demo.com</div>
+        </div>
+      </div>
+      <button class="logout-btn" id="logoutBtn">
+        <div class="link-icon">🚪</div>
+        <span>Cerrar sesión</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════════
+       CHAT PRINCIPAL
+  ═══════════════════════════════════════════ -->
+  <div class="main-content" style="display:flex;flex-direction:column;">
+
+    <!-- Chat Sidebar (lista de conversaciones) -->
+    <div style="display:flex;flex:1;overflow:hidden;margin-left:var(--sidebar-width);">
+      <div class="chat-sidebar" role="complementary" aria-label="Conversaciones">
+        <div class="chat-sidebar-header">
+          <h3>💬 Conversaciones</h3>
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Buscar..." id="searchConv" aria-label="Buscar conversaciones" />
+          </div>
+        </div>
+
+        <div class="chat-list" role="list" aria-label="Lista de conversaciones">
+          <div class="chat-item active" role="listitem" tabindex="0">
+            <div class="chat-item-avatar">
+              🤖
+              <div class="online-indicator"></div>
+            </div>
+            <div class="chat-item-body">
+              <div class="ci-name">SmartChat IA</div>
+              <div class="ci-preview">¡Hola! ¿Cómo te sientes hoy?</div>
+            </div>
+            <div class="chat-item-meta">
+              <span class="ci-time">Ahora</span>
+            </div>
+          </div>
+          <div class="chat-item" role="listitem" tabindex="0">
+            <div class="chat-item-avatar">📊</div>
+            <div class="chat-item-body">
+              <div class="ci-name">Sesión de ayer</div>
+              <div class="ci-preview">Me sentí mucho mejor, gracias</div>
+            </div>
+            <div class="chat-item-meta">
+              <span class="ci-time">Ayer</span>
+            </div>
+          </div>
+          <div class="chat-item" role="listitem" tabindex="0">
+            <div class="chat-item-avatar">💭</div>
+            <div class="chat-item-body">
+              <div class="ci-name">Hace 3 días</div>
+              <div class="ci-preview">Estaba muy estresado con el trabajo</div>
+            </div>
+            <div class="chat-item-meta">
+              <span class="ci-time">Lun</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="new-chat-btn" id="newChatBtn" aria-label="Nueva conversación">
+          ✏️ Nueva conversación
+        </button>
+      </div>
+
+      <!-- ══════════════════════
+           ÁREA DE CHAT
+      ═══════════════════════════ -->
+      <div class="chat-main" role="main">
+        <!-- Chat topbar -->
+        <header class="chat-topbar">
+          <div class="chat-topbar-left">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú" style="display:none;">☰</button>
+            <div class="chat-bot-avatar">
+              🤖
+              <div class="online-indicator"></div>
+            </div>
+            <div class="chat-bot-info">
+              <div class="bot-name">SmartChat IA</div>
+              <div class="bot-status">
+                <span class="status-dot"></span>
+                En línea • Siempre disponible
+              </div>
+            </div>
+          </div>
+          <div class="chat-topbar-actions">
+            <div style="font-size:0.8125rem;color:var(--text-muted);padding:6px 12px;background:var(--surface-2);border-radius:var(--radius-full);border:1px solid var(--border);">
+              🕐 <span id="liveClock">--:--</span>
+            </div>
+            <span style="font-size:0.75rem;color:var(--text-subtle);padding:4px 10px;background:var(--primary-light);color:var(--primary);border-radius:var(--radius-full);">
+              Mensajes: <strong id="sessionMsgCount">0</strong>
+            </span>
+            <button class="chat-action-btn" data-action="theme" id="themeToggleChat" aria-label="Cambiar tema">🌙</button>
+            <a href="dashboard.html" class="chat-action-btn" title="Volver al dashboard" aria-label="Volver al dashboard">🏠</a>
+          </div>
+        </header>
+
+        <!-- Messages -->
+        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Conversación con SmartChat">
+          <div class="date-divider" aria-label="Fecha">
+            <span>📅 Hoy — <span id="chatDate"></span></span>
+          </div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="suggestions" role="group" aria-label="Sugerencias de mensajes">
+          <button class="suggestion-chip" data-msg="Hola, me siento triste hoy" id="sug1">😢 Me siento triste</button>
+          <button class="suggestion-chip" data-msg="Estoy muy estresado con el trabajo" id="sug2">😰 Tengo estrés</button>
+          <button class="suggestion-chip" data-msg="Tengo mucha ansiedad" id="sug3">😟 Siento ansiedad</button>
+          <button class="suggestion-chip" data-msg="Necesito motivación para seguir adelante" id="sug4">💪 Quiero motivación</button>
+          <button class="suggestion-chip" data-msg="Me siento muy solo" id="sug5">🤍 Me siento solo</button>
+        </div>
+
+        <!-- Input area -->
+        <div class="chat-input-area">
+          <div class="chat-input-wrapper">
+            <textarea
+              id="messageInput"
+              placeholder="Escribe cómo te sientes... (Enter para enviar)"
+              rows="1"
+              aria-label="Campo de mensaje"
+              maxlength="500"
+            ></textarea>
+            <button class="send-btn" id="sendBtn" aria-label="Enviar mensaje">➤</button>
+          </div>
+          <p class="char-hint">💙 SmartChat es una simulación académica. Para apoyo profesional, consulta a un especialista.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Fecha actual en el chat
+  document.getElementById('chatDate').textContent = new Date().toLocaleDateString('es-ES', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+  // Botón nueva conversación
+  document.getElementById('newChatBtn')?.addEventListener('click', () => {
+    document.getElementById('chatMessages').innerHTML = `
+      <div class="date-divider"><span>📅 Nueva conversación</span></div>
+    `;
+    document.getElementById('sessionMsgCount').textContent = '0';
+    setTimeout(() => {
+      addMessage('bot', '¡Nueva sesión iniciada! 🌟 ¿Cómo te sientes en este momento?');
+    }, 400);
+  });
+  // Theme toggles en chatbot
+  document.getElementById('themeToggleChat')?.addEventListener('click', () => window.SmartTheme?.toggle());
+  document.querySelector('[data-action="theme"]#themeToggle')?.addEventListener('click', () => window.SmartTheme?.toggle());
+</script>
+<script src="../js/auth.js"></script>
+<script src="../js/chatbot.js"></script>
+</body>
+</html>

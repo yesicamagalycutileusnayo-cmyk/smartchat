@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — SmartChat</title>
+  <meta name="description" content="Contacta al equipo de SmartChat. Proyecto académico de Ingeniería de Sistemas." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script src="../js/theme.js"></script>
+  <style>
+    /* ── Contact Page Styles ─────────────────────────── */
+    .contact-page {
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* Topbar simple */
+    .contact-topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .contact-topbar a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+    .topbar-logo-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, #2563EB, #06B6D4);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+    .topbar-logo-txt {
+      background: linear-gradient(135deg,#2563EB,#06B6D4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Hero banner */
+    .contact-hero {
+      background: var(--gradient-hero);
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(37,99,235,0.4), transparent 70%);
+    }
+    .contact-hero .container { position: relative; z-index: 1; }
+    .contact-hero h1 { color: #fff; margin-bottom: 16px; }
+    .contact-hero p  { color: rgba(255,255,255,0.7); font-size: 1.0625rem; max-width: 500px; margin: 0 auto; }
+
+    /* Contact grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 40px;
+      padding: 64px 0;
+    }
+
+    /* Form card */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-card h2 { margin-bottom: 8px; }
+    .form-card > p { margin-bottom: 32px; }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .textarea-input {
+      resize: vertical;
+      min-height: 130px;
+      padding: 14px 16px;
+    }
+
+    .success-msg {
+      background: #D1FAE5;
+      border: 1px solid #6EE7B7;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+      display: none;
+    }
+    .success-msg.visible {
+      display: block;
+      animation: fadeInUp 0.4s ease both;
+    }
+    [data-theme="dark"] .success-msg { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); }
+    .success-msg h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .success-msg p  { color: var(--success); margin-bottom: 0; }
+
+    /* Info cards */
+    .contact-info { display: flex; flex-direction: column; gap: 16px; }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all var(--transition);
+    }
+    .info-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .info-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .info-icon.blue   { background: var(--primary-light); }
+    .info-icon.cyan   { background: var(--accent-light); }
+    .info-icon.green  { background: #D1FAE5; }
+    [data-theme="dark"] .info-icon.green { background: rgba(16,185,129,0.15); }
+    .info-text h4 { margin-bottom: 4px; }
+    .info-text p  { font-size: 0.875rem; margin: 0; }
+
+    .team-mini {
+      background: var(--gradient-hero);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+      color: white;
+    }
+    .team-mini h3 { color: #fff; margin-bottom: 12px; font-size: 1.0625rem; }
+    .team-mini p  { color: rgba(255,255,255,0.7); font-size: 0.875rem; margin-bottom: 16px; }
+    .team-badges  { display: flex; flex-wrap: wrap; gap: 8px; }
+    .team-badges span {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row     { grid-template-columns: 1fr; }
+      .form-card    { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="contact-page">
+
+  <!-- Topbar -->
+  <header class="contact-topbar" role="banner">
+    <a href="../index.html" aria-label="SmartChat inicio">
+      <div class="topbar-logo-icon">💬</div>
+      <span class="topbar-logo-txt">SmartChat</span>
+    </a>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <a href="../index.html" class="btn btn-ghost btn-sm" id="backHomeBtn">← Inicio</a>
+      <a href="../login.html" class="btn btn-primary btn-sm" id="loginTopBtn">Ingresar →</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" style="border:1.5px solid var(--border);background:var(--surface);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">🌙</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="contact-hero" aria-labelledby="contact-hero-title">
+    <div class="container">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.9);padding:6px 16px;border-radius:999px;font-size:0.8125rem;font-weight:600;margin-bottom:20px;">
+        📩 Contáctanos
+      </div>
+      <h1 id="contact-hero-title">¿Tienes preguntas sobre SmartChat?</h1>
+      <p>Estamos disponibles para responder dudas sobre el proyecto académico, la implementación técnica y el sistema en general.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section aria-labelledby="contact-form-title">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Formulario -->
+        <div class="form-card">
+          <h2 id="contact-form-title">Envíanos un mensaje</h2>
+          <p>Completa el formulario y nos pondremos en contacto contigo a la brevedad.</p>
+
+          <!-- Success state -->
+          <div class="success-msg" id="successMsg" role="alert" aria-live="polite">
+            <div style="font-size:3rem;margin-bottom:12px;">🎉</div>
+            <h3 style="color:var(--success);">¡Mensaje enviado!</h3>
+            <p>Gracias por contactarnos. Responderemos a tu mensaje dentro de las próximas 24 horas.</p>
+            <button class="btn btn-primary" onclick="resetForm()" style="margin-top:16px;" id="sendAnotherBtn">Enviar otro mensaje</button>
+          </div>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="firstName">Nombre *</label>
+                <input type="text" id="firstName" class="input" placeholder="Ana" required />
+              </div>
+              <div class="input-group">
+                <label for="lastName">Apellido *</label>
+                <input type="text" id="lastName" class="input" placeholder="García" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="contactEmail">Correo electrónico *</label>
+              <input type="email" id="contactEmail" class="input" placeholder="ejemplo@correo.com" required />
+            </div>
+
+            <div class="input-group">
+              <label for="subject">Asunto</label>
+              <select id="subject" class="input" style="cursor:pointer;">
+                <option value="">Selecciona un asunto...</option>
+                <option value="info">Información general del proyecto</option>
+                <option value="technical">Consulta técnica</option>
+                <option value="academic">Colaboración académica</option>
+                <option value="bug">Reporte de error</option>
+                <option value="other">Otro</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="message">Mensaje *</label>
+              <textarea id="message" class="input textarea-input" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:10px;">
+              <input type="checkbox" id="privacy" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;" />
+              <label for="privacy" style="font-size:0.875rem;color:var(--text-muted);cursor:pointer;">
+                Acepto que este es un proyecto académico de demostración
+              </label>
+            </div>
+
+            <div id="contactError" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:12px 16px;font-size:0.875rem;color:var(--danger);" role="alert"></div>
+
+            <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="justify-content:center;padding:14px;">
+              📩 Enviar mensaje
+            </button>
+          </form>
+        </div>
+
+        <!-- Info lateral -->
+        <div class="contact-info">
+          <div class="info-card">
+            <div class="info-icon blue">📧</div>
+            <div class="info-text">
+              <h4>Correo Electrónico</h4>
+              <p>smartchat@demo.edu.pe</p>
+              <p style="margin-top:4px;color:var(--text-subtle);">Respuesta en menos de 24h</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon cyan">🌐</div>
+            <div class="info-text">
+              <h4>Proyecto Académico</h4>
+              <p>Ingeniería de Sistemas — 2025</p>
+              <p style="margin-top:4px;color:var(--text-subtle);">Proyecto Integrador Final</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon green">🕐</div>
+            <div class="info-text">
+              <h4>Disponibilidad</h4>
+              <p>Lunes a Viernes: 8am – 6pm</p>
+              <p style="margin-top:4px;color:var(--text-subtle);">Chatbot: 24/7</p>
+            </div>
+          </div>
+
+          <div class="team-mini">
+            <h3>👥 Equipo SmartChat</h3>
+            <p>Desarrollado por estudiantes de Ingeniería de Sistemas apasionados por la tecnología con impacto social.</p>
+            <div class="team-badges">
+              <span>📱 Frontend</span>
+              <span>🎨 UI/UX</span>
+              <span>📊 Análisis</span>
+              <span>🧪 QA</span>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:20px;">
+            <p style="font-size:0.875rem;margin-bottom:16px;">¿Listo para probar SmartChat?</p>
+            <a href="../login.html" class="btn btn-primary w-full" id="trySystemBtn" style="justify-content:center;">
+              🚀 Ingresar al Sistema
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer simple -->
+  <footer style="background:#060B18;color:rgba(255,255,255,0.5);text-align:center;padding:24px;font-size:0.8125rem;" role="contentinfo">
+    © 2025 SmartChat — Proyecto Académico de Ingeniería de Sistemas
+  </footer>
+</div>
+
+<script>
+  // Contact form logic
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const errEl = document.getElementById('contactError');
+    errEl.style.display = 'none';
+
+    const first   = document.getElementById('firstName').value.trim();
+    const last    = document.getElementById('lastName').value.trim();
+    const email   = document.getElementById('contactEmail').value.trim();
+    const msg     = document.getElementById('message').value.trim();
+    const privacy = document.getElementById('privacy').checked;
+
+    if (!first || !last || !email || !msg) {
+      errEl.textContent = '⚠️ Por favor completa todos los campos obligatorios.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = '⚠️ Ingresa un correo electrónico válido.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!privacy) {
+      errEl.textContent = '⚠️ Debes aceptar los términos antes de enviar.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    const btn = document.getElementById('contactSubmitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<div style="width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;"></div> Enviando...';
+
+    await new Promise(r => setTimeout(r, 1500));
+
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMsg').classList.add('visible');
+  });
+
+  function resetForm() {
+    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm').style.display = 'flex';
+    document.getElementById('successMsg').classList.remove('visible');
+    const btn = document.getElementById('contactSubmitBtn');
+    btn.disabled = false;
+    btn.innerHTML = '📩 Enviar mensaje';
+  }
+</script>
+</body>
+</html>

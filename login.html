@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión — SmartChat</title>
+  <meta name="description" content="Accede a SmartChat, tu plataforma de apoyo emocional inteligente." />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <script src="js/theme.js"></script>
+  <style>
+    @keyframes shakeX {
+      0%,100%{transform:translateX(0)}
+      20%{transform:translateX(-8px)}
+      40%{transform:translateX(8px)}
+      60%{transform:translateX(-5px)}
+      80%{transform:translateX(5px)}
+    }
+  </style>
+</head>
+<body>
+<div class="login-page">
+
+  <!-- ══════════════════════════════════════
+       PANEL IZQUIERDO — VISUAL
+  ═══════════════════════════════════════════ -->
+  <div class="login-visual" aria-hidden="true">
+    <div class="login-visual-brand">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon" style="width:38px;height:38px;background:linear-gradient(135deg,#2563EB,#06B6D4);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;">💬</div>
+        <span style="font-size:1.25rem;font-weight:800;color:#fff;letter-spacing:-0.02em;">SmartChat</span>
+      </a>
+    </div>
+
+    <div class="login-visual-content">
+      <h2 class="login-visual-title">
+        Tu bienestar<br>
+        <span>emocional</span><br>
+        importa
+      </h2>
+      <p style="color:rgba(255,255,255,0.65);font-size:0.9375rem;margin-bottom:28px;">
+        SmartChat te acompaña en cada momento con empatía, discreción y apoyo real.
+      </p>
+
+      <div class="phrases-carousel" role="region" aria-label="Mensajes del chatbot">
+        <div class="phrase-item">
+          <span class="phrase-emoji">💙</span>
+          "No estás solo/a. Estoy aquí para escucharte sin juzgarte, en cualquier momento que lo necesites."
+        </div>
+        <div class="phrase-item">
+          <span class="phrase-emoji">🌿</span>
+          "La ansiedad es la mente tratando de protegerte. Respiremos juntos. Todo va a estar bien."
+        </div>
+        <div class="phrase-item">
+          <span class="phrase-emoji">💪</span>
+          "El estrés es temporal. Recuerda: no tienes que resolver todo hoy. Un paso a la vez."
+        </div>
+        <div class="phrase-item">
+          <span class="phrase-emoji">🌟</span>
+          "Pedir ayuda es un acto de valentía. Estoy orgulloso/a de que estés aquí."
+        </div>
+        <div class="phrase-item">
+          <span class="phrase-emoji">🤗</span>
+          "Cada emoción que sientes es válida. Cuéntame qué está pasando, estoy aquí para ti."
+        </div>
+      </div>
+    </div>
+
+    <div class="login-visual-footer">
+      <div class="login-stats">
+        <div class="login-stat">
+          <span class="num">1,200+</span>
+          <span class="lbl">Usuarios</span>
+        </div>
+        <div class="login-stat">
+          <span class="num">98%</span>
+          <span class="lbl">Satisfacción</span>
+        </div>
+        <div class="login-stat">
+          <span class="num">24/7</span>
+          <span class="lbl">Disponible</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       PANEL DERECHO — FORMULARIO
+  ═══════════════════════════════════════════ -->
+  <div class="login-form-panel">
+    <button class="theme-toggle-login" id="themeToggle" aria-label="Cambiar tema">🌙</button>
+
+    <div class="login-box">
+      <div class="login-box-header">
+        <div class="eyebrow">🔐 Acceso al Sistema</div>
+        <h2>Bienvenido/a de vuelta</h2>
+        <p>Ingresa tus credenciales para acceder a SmartChat</p>
+      </div>
+
+      <!-- Error message -->
+      <div class="error-box" id="errorBox" role="alert" aria-live="polite"></div>
+
+      <form class="login-form" id="loginForm" novalidate>
+        <!-- Email -->
+        <div class="input-group">
+          <label for="emailInput">Correo electrónico</label>
+          <div class="input-wrapper">
+            <span class="input-icon">✉️</span>
+            <input
+              type="email"
+              id="emailInput"
+              class="input"
+              placeholder="admin@demo.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <label for="passwordInput">Contraseña</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔑</span>
+            <input
+              type="password"
+              id="passwordInput"
+              class="input"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="toggle-pass" id="togglePass" aria-label="Mostrar/ocultar contraseña">👁️</button>
+          </div>
+        </div>
+
+        <!-- Opciones -->
+        <div class="login-options">
+          <label class="remember-me" for="rememberMe">
+            <input type="checkbox" id="rememberMe" />
+            Recordarme
+          </label>
+          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <!-- Demo hint -->
+        <div class="demo-hint" id="demoHint" role="button" tabindex="0" aria-label="Usar credenciales de demo">
+          💡 Demo — Haz clic para autocompletar:<br>
+          <strong>admin@demo.com</strong> / <strong>1234</strong>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-login" id="submitBtn">
+          🚀 Ingresar al Sistema
+        </button>
+
+        <div class="divider">o</div>
+
+        <a href="index.html" class="login-back">
+          ← Volver a la página principal
+        </a>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="js/auth.js"></script>
+</body>
+</html>

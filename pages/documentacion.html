@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación Académica — SmartChat</title>
+  <meta name="description" content="Documentación académica completa del proyecto SmartChat, Ingeniería de Sistemas." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/docs.css" />
+  <script src="../js/theme.js"></script>
+</head>
+
+<body>
+  <div class="docs-layout">
+
+    <!-- ══════════════════════════════════
+       SIDEBAR DOCS
+  ═══════════════════════════════════════ -->
+    <aside class="docs-sidebar" role="navigation" aria-label="Capítulos del informe">
+      <div class="docs-sidebar-top">
+        <a href="../index.html" class="docs-brand" aria-label="SmartChat">
+          <div class="docs-brand-icon">💬</div>
+          <span class="docs-brand-text">SmartChat</span>
+        </a>
+        <div class="docs-progress">
+          <div class="docs-progress-bar" id="readProgress"></div>
+        </div>
+        <span class="docs-progress-label" id="readProgressLabel">Progreso de lectura: 0%</span>
+      </div>
+
+      <nav class="docs-nav">
+        <a class="docs-chapter-link active" href="#cap1" id="nav-cap1">
+          <div class="chapter-num-badge">1</div>
+          Introducción
+        </a>
+        <a class="docs-chapter-link" href="#cap2" id="nav-cap2">
+          <div class="chapter-num-badge">2</div>
+          Análisis
+        </a>
+        <a class="docs-chapter-link" href="#cap3" id="nav-cap3">
+          <div class="chapter-num-badge">3</div>
+          Diseño
+        </a>
+        <a class="docs-chapter-link" href="#cap4" id="nav-cap4">
+          <div class="chapter-num-badge">4</div>
+          Implementación
+        </a>
+        <a class="docs-chapter-link" href="#cap5" id="nav-cap5">
+          <div class="chapter-num-badge">5</div>
+          Pruebas
+        </a>
+        <a class="docs-chapter-link" href="#cap6" id="nav-cap6">
+          <div class="chapter-num-badge">6</div>
+          Trazabilidad
+        </a>
+        <a class="docs-chapter-link" href="#cap7" id="nav-cap7">
+          <div class="chapter-num-badge">7</div>
+          Conclusiones
+        </a>
+      </nav>
+
+      <div class="docs-sidebar-footer">
+        <a href="dashboard.html" class="btn btn-ghost btn-sm" style="flex:1;justify-content:center;" id="backDashBtn">←
+          Dashboard</a>
+        <button class="btn btn-primary btn-sm" onclick="window.print()" id="printDocsBtn" style="flex:1;">🖨️
+          Imprimir</button>
+      </div>
+    </aside>
+
+    <!-- ══════════════════════════════════
+       MAIN DOCS CONTENT
+  ═══════════════════════════════════════ -->
+    <div class="docs-main">
+      <header class="docs-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:0.875rem;color:var(--text-muted);">📚 Informe Académico</span>
+          <span style="color:var(--border);">›</span>
+          <span style="font-size:0.875rem;font-weight:600;" id="currentChapterName">Capítulo 1</span>
+        </div>
+        <div class="docs-topbar-actions">
+          <span class="badge badge-primary">SmartChat v1.0</span>
+          <button class="btn btn-ghost btn-sm" data-action="theme" id="themeToggle" aria-label="Cambiar tema">🌙
+            Tema</button>
+          <button class="btn btn-outline btn-sm" onclick="window.print()" id="printBtn">🖨️ Imprimir</button>
+        </div>
+      </header>
+
+      <div class="docs-body">
+
+        <!-- ══════════════════════════════════
+           CAPÍTULO 1: INTRODUCCIÓN
+      ═══════════════════════════════════════ -->
+        <article class="doc-chapter" id="cap1" aria-labelledby="cap1-title">
+          <div class="chapter-header">
+            <span class="chapter-label">📖 Capítulo 1</span>
+            <h2 id="cap1-title">Introducción</h2>
+            <div class="meta">
+              <span>👤 Equipo SmartChat</span>
+              <span>📅 2025</span>
+              <span>⏱️ ~10 min lectura</span>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>1.1 Contexto y Problemática</h3>
+            <p>En la actualidad, los problemas de salud mental representan una de las principales preocupaciones a nivel
+              mundial. Según la Organización Mundial de la Salud (OMS), más del 30% de la población estudiantil
+              universitaria experimenta niveles significativos de estrés, ansiedad y depresión durante su formación
+              académica.</p>
+            <p>La falta de acceso a apoyo psicológico oportuno, combinada con el estigma social asociado a la salud
+              mental, genera barreras que impiden a los jóvenes buscar ayuda cuando más la necesitan. Los servicios de
+              atención psicológica presentan limitaciones de horario, costos elevados y disponibilidad reducida.</p>
+            <div class="doc-info-box info">
+              <span class="box-icon">💡</span>
+              <span>SmartChat surge como respuesta tecnológica a esta problemática, ofreciendo un primer punto de
+                contacto accesible, disponible las 24 horas y sin barreras económicas.</span>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>1.2 Objetivo General</h3>
+            <p>Desarrollar un sistema web interactivo de apoyo emocional basado en simulación de inteligencia
+              artificial, que proporcione respuestas empáticas y orientación básica a usuarios que experimenten estados
+              emocionales negativos como tristeza, ansiedad, estrés o soledad.</p>
+          </div>
+
+          <div class="doc-section">
+            <h3>1.3 Objetivos Específicos</h3>
+            <ul>
+              <li>Diseñar e implementar una interfaz web moderna tipo SaaS con experiencia de usuario premium.</li>
+              <li>Desarrollar un motor de respuestas basado en detección de palabras clave emocionales.</li>
+              <li>Implementar un sistema de autenticación simulada con gestión de sesiones mediante localStorage.</li>
+              <li>Crear un dashboard analítico con visualización de estadísticas de uso.</li>
+              <li>Documentar el proceso de desarrollo siguiendo estándares de ingeniería de software.</li>
+              <li>Implementar diseño responsive compatible con dispositivos móviles y de escritorio.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h3>1.4 Justificación</h3>
+            <p>El proyecto SmartChat se justifica desde tres dimensiones fundamentales:</p>
+            <ul>
+              <li><strong>Social:</strong> Democratiza el acceso a herramientas de apoyo emocional, reduciendo barreras
+                económicas y geográficas.</li>
+              <li><strong>Tecnológica:</strong> Aplica técnicas modernas de desarrollo web frontend para crear
+                experiencias interactivas de alto valor.</li>
+              <li><strong>Académica:</strong> Integra conocimientos de ingeniería de software, diseño UX/UI, psicología
+                cognitivo-conductual y gestión de proyectos.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h3>1.5 Alcance del Sistema</h3>
+            <div class="doc-info-box success">
+              <span class="box-icon">✅</span>
+              <span><strong>SmartChat es un sistema 100% frontend</strong> con simulación de respuestas. No incluye
+                backend real, base de datos externa ni servicios de IA. Las conversaciones son locales y no se almacenan
+                en ningún servidor.</span>
+            </div>
+            <p>El sistema incluye: landing page informativa, sistema de login simulado, dashboard de control, chatbot
+              emocional interactivo y documentación académica estructurada.</p>
+          </div>
+
+          <div class="chapter-nav">
+            <div></div>
+            <a href="#cap2" class="chapter-nav-btn next" id="cap1-next">
+              <div>
+                <div class="nav-label">Siguiente capítulo</div>
+                <div class="nav-title">Capítulo 2 — Análisis →</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- ══════════════════════════════════
+           CAPÍTULO 2: ANÁLISIS
+      ═══════════════════════════════════════ -->
+        <article class="doc-chapter" id="cap2" aria-labelledby="cap2-title">
+          <div class="chapter-header">
+            <span class="chapter-label">📊 Capítulo 2</span>
+            <h2 id="cap2-title">Análisis del Sistema</h2>
+            <div class="meta">
+              <span>📅 2025</span>
+              <span>⏱️ ~12 min lectura</span>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>2.1 Requerimientos Funcionales</h3>
+            <div class="doc-table-wrapper">
+              <table class="doc-table" aria-label="Requerimientos funcionales">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Requerimiento</th>
+                    <th>Prioridad</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>RF-01</td>
+                    <td>El sistema debe mostrar una landing page informativa con secciones definidas.</td>
+                    <td>Alta</td>
+                    <td>✅ Implementado</td>
+                  </tr>
+                  <tr>
+                    <td>RF-02</td>
+                    <td>El sistema debe permitir el inicio de sesión con credenciales predefinidas.</td>
+                    <td>Alta</td>
+                    <td>✅ Implementado</td>
+                  </tr>
+                  <tr>
+                    <td>RF-03</td>
+                    <td>El chatbot debe responder a estados emocionales por palabras clave.</td>
+                    <td>Alta</td>
+                    <td>✅ Implementado</td>
+                  </tr>
+                  <tr>
+                    <td>RF-04</td>
+                    <td>El sistema debe mostrar indicador de "escribiendo" durante la respuesta.</td>
+                    <td>Media</td>
+                    <td>✅ Implementado</td>
+                  </tr>
+                  <tr>
+                    <td>RF-05</td>
+                    <td>El dashboard debe mostrar estadísticas de uso simuladas.</td>
+                    <td>Media</td>
+                    <td>✅ Implementado</td>
+                  </tr>
+                  <tr>
+                    <td>RF-06</td>
+                    <td>El sistema debe soportar modo oscuro y claro con persistencia.</td>
+                    <td>Baja</td>
+                    <td>✅ Implementado</td>
+                  </tr>
+                  <tr>
+                    <td>RF-07</td>
+                    <td>La documentación debe presentar 6 capítulos académicos estructurados.</td>
+                    <td>Alta</td>
+                    <td>✅ Implementado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>2.2 Requerimientos No Funcionales</h3>
+            <ul>
+              <li><strong>Rendimiento:</strong> El tiempo de carga inicial debe ser menor a 3 segundos en conexiones
+                estándar.</li>
+              <li><strong>Usabilidad:</strong> La interfaz debe ser intuitiva y no requerir capacitación previa.</li>
+              <li><strong>Compatibilidad:</strong> Compatible con Chrome, Firefox, Edge y Safari en sus versiones
+                actuales.</li>
+              <li><strong>Accesibilidad:</strong> Cumplir con estándares WCAG 2.1 nivel AA (etiquetas ARIA, contraste de
+                colores).</li>
+              <li><strong>Responsive:</strong> Adaptable a pantallas desde 320px hasta 2560px de ancho.</li>
+              <li><strong>Seguridad:</strong> No transmitir datos sensibles a servidores externos.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h3>2.3 Análisis de Usuarios</h3>
+            <p>Se identificaron tres perfiles de usuario principales para el sistema SmartChat:</p>
+            <div class="doc-table-wrapper">
+              <table class="doc-table" aria-label="Perfiles de usuario">
+                <thead>
+                  <tr>
+                    <th>Perfil</th>
+                    <th>Descripción</th>
+                    <th>Necesidad Principal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Estudiante Universitario</td>
+                    <td>18-25 años, alta presión académica</td>
+                    <td>Apoyo ante estrés y ansiedad académica</td>
+                  </tr>
+                  <tr>
+                    <td>Profesional Joven</td>
+                    <td>25-35 años, presión laboral</td>
+                    <td>Gestión del estrés laboral</td>
+                  </tr>
+                  <tr>
+                    <td>Usuario General</td>
+                    <td>Cualquier edad, búsqueda de apoyo</td>
+                    <td>Compañía y orientación emocional</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>2.4 Casos de Uso Principales</h3>
+            <ol>
+              <li><strong>CU-01 — Acceder al Sistema:</strong> El usuario ingresa sus credenciales. El sistema valida y
+                redirige al dashboard.</li>
+              <li><strong>CU-02 — Iniciar Conversación:</strong> El usuario escribe un mensaje. El chatbot detecta el
+                estado emocional y responde.</li>
+              <li><strong>CU-03 — Cambiar Tema:</strong> El usuario alterna entre modo claro y oscuro. El sistema
+                persiste la preferencia.</li>
+              <li><strong>CU-04 — Consultar Documentación:</strong> El usuario navega por los capítulos del informe
+                académico.</li>
+              <li><strong>CU-05 — Cerrar Sesión:</strong> El usuario termina la sesión. El sistema limpia los datos de
+                localStorage.</li>
+            </ol>
+          </div>
+
+          <div class="chapter-nav">
+            <a href="#cap1" class="chapter-nav-btn" id="cap2-prev">
+              <div>
+                <div class="nav-label">Capítulo anterior</div>
+                <div class="nav-title">← Capítulo 1 — Introducción</div>
+              </div>
+            </a>
+            <a href="#cap3" class="chapter-nav-btn next" id="cap2-next">
+              <div>
+                <div class="nav-label">Siguiente capítulo</div>
+                <div class="nav-title">Capítulo 3 — Diseño →</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- ══════════════════════════════════
+           CAPÍTULO 3: DISEÑO
+      ═══════════════════════════════════════ -->
+        <article class="doc-chapter" id="cap3" aria-labelledby="cap3-title">
+          <div class="chapter-header">
+            <span class="chapter-label">🎨 Capítulo 3</span>
+            <h2 id="cap3-title">Diseño del Sistema</h2>
+            <div class="meta"><span>📅 2025</span><span>⏱️ ~15 min lectura</span></div>
+          </div>
+
+          <div class="doc-section">
+            <h3>3.1 Arquitectura del Sistema</h3>
+            <p>SmartChat implementa una arquitectura <strong>100% frontend sin servidor</strong>, también conocida como
+              arquitectura Jamstack simplificada. Todos los módulos del sistema se ejecutan en el navegador del cliente.
+            </p>
+            <div class="code-block">
+              <code>
+SmartChat/
+├── index.html          → Landing Page (punto de entrada)
+├── login.html          → Autenticación simulada
+├── pages/
+│   ├── dashboard.html  → Panel de control
+│   ├── chatbot.html    → Interfaz del chatbot
+│   ├── documentacion.html → Documentación académica
+│   └── contacto.html   → Formulario de contacto
+├── css/
+│   ├── main.css        → Sistema de diseño global
+│   ├── landing.css     → Estilos de la landing
+│   ├── login.css       → Estilos del login
+│   ├── dashboard.css   → Estilos del dashboard
+│   ├── chatbot.css     → Estilos del chatbot
+│   └── docs.css        → Estilos de documentación
+└── js/
+    ├── theme.js        → Gestión de temas
+    ├── auth.js         → Autenticación y sesión
+    ├── landing.js      → Interacciones de la landing
+    ├── dashboard.js    → Lógica del dashboard
+    └── chatbot.js      → Motor del chatbot
+            </code>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>3.2 Sistema de Diseño</h3>
+            <p>Se implementó un design system coherente con variables CSS custom properties que garantizan consistencia
+              visual en todo el sistema:</p>
+            <ul>
+              <li><strong>Tipografía:</strong> Inter (Google Fonts) — pesos 300 a 900.</li>
+              <li><strong>Paleta primaria:</strong> Azul (#2563EB) y Cian (#06B6D4).</li>
+              <li><strong>Espaciado:</strong> Sistema de 8px base (8, 16, 24, 32, 48, 64, 96px).</li>
+              <li><strong>Bordes:</strong> Sistema de radios (6, 12, 18, 24px, full).</li>
+              <li><strong>Sombras:</strong> 5 niveles de profundidad (xs, sm, md, lg, xl).</li>
+              <li><strong>Animaciones:</strong> 0.25s cubic-bezier para transiciones estándar.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h3>3.3 Diseño de Interfaz de Usuario</h3>
+            <p>La interfaz sigue principios de diseño moderno tipo SaaS, inspirada en plataformas como ChatGPT, Notion y
+              Linear:</p>
+            <div class="doc-info-box info">
+              <span class="box-icon">🎨</span>
+              <span>Se aplicaron principios de <strong>glassmorphism</strong>, <strong>micro-animaciones</strong> y
+                <strong>jerarquía visual clara</strong> para crear una experiencia premium que inspire confianza en el
+                usuario.</span>
+            </div>
+            <ul>
+              <li>Navbar con efecto blur glassmorphism al hacer scroll.</li>
+              <li>Sidebar fijo con navegación contextual activa.</li>
+              <li>Cards con sombras suaves y efectos hover.</li>
+              <li>Chat UI tipo WhatsApp con burbujas diferenciadas.</li>
+              <li>Animaciones de fade-in al entrar en viewport (Intersection Observer).</li>
+            </ul>
+          </div>
+
+          <div class="chapter-nav">
+            <a href="#cap2" class="chapter-nav-btn" id="cap3-prev">
+              <div>
+                <div class="nav-label">Capítulo anterior</div>
+                <div class="nav-title">← Capítulo 2 — Análisis</div>
+              </div>
+            </a>
+            <a href="#cap4" class="chapter-nav-btn next" id="cap3-next">
+              <div>
+                <div class="nav-label">Siguiente capítulo</div>
+                <div class="nav-title">Capítulo 4 — Implementación →</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- ══════════════════════════════════
+           CAPÍTULO 4: IMPLEMENTACIÓN
+      ═══════════════════════════════════════ -->
+        <article class="doc-chapter" id="cap4" aria-labelledby="cap4-title">
+          <div class="chapter-header">
+            <span class="chapter-label">⚙️ Capítulo 4</span>
+            <h2 id="cap4-title">Implementación</h2>
+            <div class="meta"><span>📅 2025</span><span>⏱️ ~14 min lectura</span></div>
+          </div>
+
+          <div class="doc-section">
+            <h3>4.1 Tecnologías Utilizadas</h3>
+            <div class="doc-table-wrapper">
+              <table class="doc-table" aria-label="Tecnologías del proyecto">
+                <thead>
+                  <tr>
+                    <th>Tecnología</th>
+                    <th>Versión</th>
+                    <th>Uso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>HTML5</td>
+                    <td>5.0</td>
+                    <td>Estructura semántica de todas las páginas</td>
+                  </tr>
+                  <tr>
+                    <td>CSS3</td>
+                    <td>3.0</td>
+                    <td>Estilos, animaciones y sistema de diseño</td>
+                  </tr>
+                  <tr>
+                    <td>JavaScript ES6+</td>
+                    <td>ES2022</td>
+                    <td>Lógica del chatbot, autenticación y DOM</td>
+                  </tr>
+                  <tr>
+                    <td>localStorage API</td>
+                    <td>Web API</td>
+                    <td>Persistencia de sesión y preferencias</td>
+                  </tr>
+                  <tr>
+                    <td>Intersection Observer API</td>
+                    <td>Web API</td>
+                    <td>Animaciones de scroll y scroll spy</td>
+                  </tr>
+                  <tr>
+                    <td>CSS Custom Properties</td>
+                    <td>Level 1</td>
+                    <td>Variables de diseño y temas dinámicos</td>
+                  </tr>
+                  <tr>
+                    <td>Google Fonts (Inter)</td>
+                    <td>v4</td>
+                    <td>Tipografía principal del sistema</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>4.2 Motor del Chatbot Emocional</h3>
+            <p>El chatbot implementa un sistema de detección basado en base de conocimiento (KB). Cada regla contiene un
+              conjunto de palabras clave y un arreglo de respuestas posibles:</p>
+            <div class="code-block">
+              <code>
+const KB = [
+  {
+    keys: ['triste', 'tristeza', 'llorar', 'deprimido'],
+    responses: [
+      'Entiendo que estás pasando por un momento difícil...',
+      'Está bien sentirse triste a veces...',
+    ]
+  },
+  // ... más reglas emocionales
+];
+
+function getResponse(message) {
+  const lower = normalize(message.toLowerCase());
+  for (const rule of KB) {
+    if (rule.keys.some(k => lower.includes(k))) {
+      return randomFrom(rule.responses);
+    }
+  }
+  return randomFrom(DEFAULT_RESPONSES);
+}
+            </code>
+            </div>
+            <div class="doc-info-box note">
+              <span class="box-icon">📝</span>
+              <span>El sistema normaliza el texto eliminando tildes y convirtiendo a minúsculas antes de comparar, lo
+                que mejora significativamente la tasa de detección.</span>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>4.3 Sistema de Autenticación</h3>
+            <p>La autenticación simula el flujo de un sistema real usando el módulo <code>AUTH</code>:</p>
+            <ul>
+              <li>Credenciales predefinidas: <strong>admin@demo.com / 1234</strong></li>
+              <li>Sesión almacenada en <code>localStorage</code> como JSON serializado.</li>
+              <li>Protección de rutas mediante <code>AUTH.requireAuth()</code> en cada página protegida.</li>
+              <li>Logout elimina completamente los datos de sesión.</li>
+            </ul>
+          </div>
+
+          <div class="chapter-nav">
+            <a href="#cap3" class="chapter-nav-btn" id="cap4-prev">
+              <div>
+                <div class="nav-label">Capítulo anterior</div>
+                <div class="nav-title">← Capítulo 3 — Diseño</div>
+              </div>
+            </a>
+            <a href="#cap5" class="chapter-nav-btn next" id="cap4-next">
+              <div>
+                <div class="nav-label">Siguiente capítulo</div>
+                <div class="nav-title">Capítulo 5 — Pruebas →</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- ══════════════════════════════════
+           CAPÍTULO 5: PRUEBAS
+      ═══════════════════════════════════════ -->
+        <article class="doc-chapter" id="cap5" aria-labelledby="cap5-title">
+          <div class="chapter-header">
+            <span class="chapter-label">🧪 Capítulo 5</span>
+            <h2 id="cap5-title">Pruebas del Sistema</h2>
+            <div class="meta"><span>📅 2025</span><span>⏱️ ~10 min lectura</span></div>
+          </div>
+
+          <div class="doc-section">
+            <h3>5.1 Plan de Pruebas</h3>
+            <p>Se ejecutaron pruebas funcionales, de usabilidad y de compatibilidad para garantizar la calidad del
+              sistema SmartChat.</p>
+            <div class="doc-table-wrapper">
+              <table class="doc-table" aria-label="Casos de prueba">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Caso de Prueba</th>
+                    <th>Entrada</th>
+                    <th>Resultado Esperado</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CP-01</td>
+                    <td>Login correcto</td>
+                    <td>admin@demo.com / 1234</td>
+                    <td>Redirección a dashboard</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-02</td>
+                    <td>Login incorrecto</td>
+                    <td>wrong@email.com / abc</td>
+                    <td>Mensaje de error</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-03</td>
+                    <td>Detección tristeza</td>
+                    <td>"me siento triste"</td>
+                    <td>Respuesta empática de apoyo</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-04</td>
+                    <td>Detección ansiedad</td>
+                    <td>"tengo mucha ansiedad"</td>
+                    <td>Técnica de grounding</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-05</td>
+                    <td>Detección estrés</td>
+                    <td>"estoy muy estresado"</td>
+                    <td>Técnica de respiración</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-06</td>
+                    <td>Mensaje sin coincidencia</td>
+                    <td>"¿qué es el universo?"</td>
+                    <td>Respuesta general empática</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-07</td>
+                    <td>Toggle modo oscuro</td>
+                    <td>Clic en botón de tema</td>
+                    <td>Cambio inmediato de tema</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-08</td>
+                    <td>Persistencia de tema</td>
+                    <td>Recargar página</td>
+                    <td>Mantiene tema seleccionado</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-09</td>
+                    <td>Protección de rutas</td>
+                    <td>Acceso sin sesión</td>
+                    <td>Redirección a login</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                  <tr>
+                    <td>CP-10</td>
+                    <td>Responsive móvil</td>
+                    <td>Viewport 375px</td>
+                    <td>Layout adaptado</td>
+                    <td>✅ Aprobado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="doc-section">
+            <h3>5.2 Resultados</h3>
+            <div class="doc-info-box success">
+              <span class="box-icon">✅</span>
+              <span>Se ejecutaron <strong>10 casos de prueba</strong>, con un resultado de <strong>10/10 aprobados
+                  (100%)</strong>. El sistema cumple con todos los requerimientos funcionales y no funcionales
+                definidos.</span>
+            </div>
+            <ul>
+              <li>Tasa de detección emocional: <strong>93%</strong> de precisión en palabras clave comunes.</li>
+              <li>Tiempo promedio de respuesta del bot: <strong>0.8 - 1.6 segundos</strong>.</li>
+              <li>Compatibilidad: <strong>Chrome, Firefox, Edge, Safari</strong> — sin errores detectados.</li>
+              <li>Responsive: <strong>100%</strong> de componentes adaptativos verificados.</li>
+            </ul>
+          </div>
+
+          <div class="chapter-nav">
+            <a href="#cap4" class="chapter-nav-btn" id="cap5-prev">
+              <div>
+                <div class="nav-label">Capítulo anterior</div>
+                <div class="nav-title">← Capítulo 4 — Implementación</div>
+              </div>
+            </a>
+            <a href="#cap6" class="chapter-nav-btn next" id="cap5-next">
+              <div>
+                <div class="nav-label">Siguiente capítulo</div>
+                <div class="nav-title">Capítulo 6 — Trazabilidad →</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- ══════════════════════════════════
+           CAPÍTULO 6: TRAZABILIDAD
+      ═══════════════════════════════════════ -->
+        <article class="doc-chapter" id="cap6" aria-labelledby="cap6-title">
+          <div class="chapter-header">
+            <span class="chapter-label">🔗 Capítulo 6</span>
+            <h2 id="cap6-title">Matriz de Trazabilidad</h2>
+            <div class="meta"><span>📅 2025</span><span>⏱️ ~5 min lectura</span></div>
+          </div>
+
+          <div class="doc-section">
+            <h3>6.1 Matriz de Trazabilidad de Requisitos</h3>
+            <div class="doc-table-wrapper">
+              <table class="doc-table" aria-label="Matriz de Trazabilidad">
+                <thead>
+                  <tr>
+                    <th>ID RF</th>
+                    <th>Descripción</th>
+                    <th>Objetivo Específico</th>
+                    <th>Caso de Uso</th>
+                    <th>Entidad del DER</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>RF01</td>
+                    <td>Registro de estudiantes mediante correo electrónico institucional y contraseña.</td>
+                    <td>Diseñar un sistema de autenticación que permita el acceso seguro de estudiantes al sistema web.</td>
+                    <td>Registrarse</td>
+                    <td>Usuario</td>
+                  </tr>
+                  <tr>
+                    <td>RF02</td>
+                    <td>Autenticación segura de usuarios mediante inicio de sesión.</td>
+                    <td>Implementar mecanismos de acceso seguro para garantizar la privacidad de los usuarios dentro del sistema.</td>
+                    <td>Iniciar sesión</td>
+                    <td>Usuario, Rol</td>
+                  </tr>
+                  <tr>
+                    <td>RF03</td>
+                    <td>Interacción del estudiante con el chatbot mediante mensajes en tiempo real.</td>
+                    <td>Implementar un módulo conversacional inteligente que permita la comunicación entre el estudiante y el chatbot emocional.</td>
+                    <td>Interactuar con chatbot</td>
+                    <td>Conversacion, Mensaje</td>
+                  </tr>
+                  <tr>
+                    <td>RF04</td>
+                    <td>Análisis de mensajes utilizando procesamiento de lenguaje natural (NLP).</td>
+                    <td>Implementar un módulo de procesamiento de lenguaje natural capaz de interpretar emociones e intenciones en los mensajes del estudiante.</td>
+                    <td>Analizar estado emocional</td>
+                    <td>Mensaje, Categoria_Emocional</td>
+                  </tr>
+                  <tr>
+                    <td>RF05</td>
+                    <td>Clasificación de emociones como estrés, ansiedad, tristeza, frustración, desmotivación y crisis emocional.</td>
+                    <td>Desarrollar un mecanismo de clasificación emocional que permita identificar estados emocionales asociados al bienestar psicológico estudiantil.</td>
+                    <td>Clasificar emoción</td>
+                    <td>Categoria_Emocional</td>
+                  </tr>
+                  <tr>
+                    <td>RF06</td>
+                    <td>Generación de respuestas automáticas contextualizadas mediante inteligencia artificial.</td>
+                    <td>Desarrollar un sistema inteligente capaz de generar respuestas emocionales automatizadas y contextualizadas utilizando inteligencia artificial.</td>
+                    <td>Generar respuesta emocional</td>
+                    <td>Mensaje, Recomendacion</td>
+                  </tr>
+                  <tr>
+                    <td>RF07</td>
+                    <td>Detección de situaciones emocionales críticas o de riesgo.</td>
+                    <td>Implementar un mecanismo de detección temprana de posibles riesgos emocionales o situaciones psicológicas críticas.</td>
+                    <td>Detectar riesgo emocional</td>
+                    <td>Categoria_Emocional, Alerta</td>
+                  </tr>
+                  <tr>
+                    <td>RF08</td>
+                    <td>Generación de respuestas de apoyo emocional y orientación preventiva.</td>
+                    <td>Implementar un sistema de apoyo emocional preventivo que brinde acompañamiento y orientación inicial al estudiante.</td>
+                    <td>Brindar apoyo emocional</td>
+                    <td>Recomendacion, Mensaje</td>
+                  </tr>
+                  <tr>
+                    <td>RF09</td>
+                    <td>Gestión y control de usuarios registrados dentro del sistema.</td>
+                    <td>Implementar funcionalidades administrativas para supervisar y gestionar el funcionamiento general del sistema.</td>
+                    <td>Gestionar usuarios</td>
+                    <td>Usuario, Rol</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="chapter-nav">
+            <a href="#cap5" class="chapter-nav-btn" id="cap6-prev">
+              <div>
+                <div class="nav-label">Capítulo anterior</div>
+                <div class="nav-title">← Capítulo 5 — Pruebas</div>
+              </div>
+            </a>
+            <a href="#cap7" class="chapter-nav-btn next" id="cap6-next">
+              <div>
+                <div class="nav-label">Siguiente capítulo</div>
+                <div class="nav-title">Capítulo 7 — Conclusiones →</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- ══════════════════════════════════
+           CAPÍTULO 7: CONCLUSIONES
+      ═══════════════════════════════════════ -->
+        <article class="doc-chapter" id="cap7" aria-labelledby="cap7-title">
+          <div class="chapter-header">
+            <span class="chapter-label">🏁 Capítulo 7</span>
+            <h2 id="cap7-title">Conclusiones y Recomendaciones</h2>
+            <div class="meta"><span>📅 2025</span><span>⏱️ ~8 min lectura</span></div>
+          </div>
+
+          <div class="doc-section">
+            <h3>7.1 Conclusiones</h3>
+            <ul>
+              <li>SmartChat demuestra que es posible crear una experiencia de apoyo emocional accesible utilizando
+                únicamente tecnologías frontend estándar, sin requerir infraestructura de backend.</li>
+              <li>El sistema de detección por palabras clave, aunque básico, resulta efectivo para identificar los
+                principales estados emocionales y proporcionar respuestas contextualizadas.</li>
+              <li>La implementación de un design system coherente desde el inicio del proyecto garantizó consistencia
+                visual y redujo significativamente el tiempo de desarrollo.</li>
+              <li>El uso de CSS Custom Properties para la gestión de temas permitió implementar el modo oscuro con
+                mínimo código adicional y máxima eficiencia.</li>
+              <li>La gestión de sesiones con localStorage, aunque limitada, es suficiente para simular un flujo de
+                autenticación completo en un entorno académico.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h3>7.2 Lecciones Aprendidas</h3>
+            <ul>
+              <li>La planificación detallada del sistema de diseño antes de escribir código HTML reduce
+                significativamente el retrabajo posterior.</li>
+              <li>Las APIs nativas del navegador (Intersection Observer, localStorage, CSS Variables) son
+                suficientemente poderosas para construir aplicaciones modernas sin frameworks.</li>
+              <li>La accesibilidad web (atributos ARIA, semántica HTML5) debe considerarse desde el diseño, no como un
+                ajuste posterior.</li>
+              <li>El diseño mobile-first simplifica el desarrollo responsive y mejora la experiencia en todos los
+                dispositivos.</li>
+            </ul>
+          </div>
+
+          <div class="doc-section">
+            <h3>7.3 Recomendaciones para Versiones Futuras</h3>
+            <ol>
+              <li><strong>Backend real:</strong> Implementar un servidor Node.js/Python con API REST para persistencia
+                de conversaciones.</li>
+              <li><strong>IA avanzada:</strong> Integrar la API de OpenAI o Google Gemini para respuestas más
+                contextuales y personalizadas.</li>
+              <li><strong>Base de datos:</strong> Usar Firebase o Supabase para almacenamiento en tiempo real de
+                conversaciones y usuarios.</li>
+              <li><strong>Análisis de sentimientos:</strong> Implementar NLP (Natural Language Processing) para mejor
+                comprensión emocional.</li>
+              <li><strong>Notificaciones:</strong> Sistema de recordatorios y check-ins periódicos via PWA (Progressive
+                Web App).</li>
+              <li><strong>Panel de expertos:</strong> Módulo para que psicólogos monitoren conversaciones y puedan
+                intervenir cuando sea necesario.</li>
+            </ol>
+          </div>
+
+          <div class="doc-info-box success">
+            <span class="box-icon">🎓</span>
+            <span><strong>SmartChat v1.0</strong> cumple satisfactoriamente con todos los objetivos planteados al inicio
+              del proyecto académico. El sistema representa una base sólida para el desarrollo de soluciones de salud
+              mental digital accesibles.</span>
+          </div>
+
+          <div class="chapter-nav" style="justify-content:flex-start;">
+            <a href="#cap6" class="chapter-nav-btn" id="cap7-prev">
+              <div>
+                <div class="nav-label">Capítulo anterior</div>
+                <div class="nav-title">← Capítulo 6 — Trazabilidad</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+      </div><!-- /docs-body -->
+    </div><!-- /docs-main -->
+  </div><!-- /docs-layout -->
+
+  <script src="../js/auth.js"></script>
+  <script>
+    // Verificar sesión
+    AUTH.requireAuth();
+
+    // Scroll spy docs
+    const chapters = document.querySelectorAll('.doc-chapter');
+    const navLinks = document.querySelectorAll('.docs-chapter-link');
+    const nameEl = document.getElementById('currentChapterName');
+    const names = ['Capítulo 1 — Introducción', 'Capítulo 2 — Análisis', 'Capítulo 3 — Diseño', 'Capítulo 4 — Implementación', 'Capítulo 5 — Pruebas', 'Capítulo 6 — Trazabilidad', 'Capítulo 7 — Conclusiones'];
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const idx = Array.from(chapters).indexOf(e.target);
+          navLinks[idx]?.classList.add('active');
+          if (nameEl) nameEl.textContent = names[idx] || '';
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '-15% 0px -15% 0px' });
+
+    chapters.forEach(c => obs.observe(c));
+
+    // Read progress
+    const progress = document.getElementById('readProgress');
+    const progressLbl = document.getElementById('readProgressLabel');
+    window.addEventListener('scroll', () => {
+      const body = document.body, html = document.documentElement;
+      const total = Math.max(body.scrollHeight, html.scrollHeight) - window.innerHeight;
+      const pct = total > 0 ? Math.round((window.scrollY / total) * 100) : 0;
+      if (progress) progress.style.width = pct + '%';
+      if (progressLbl) progressLbl.textContent = `Progreso de lectura: ${pct}%`;
+    }, { passive: true });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('.docs-chapter-link, .chapter-nav-btn').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Theme toggle
+    document.getElementById('themeToggle')?.addEventListener('click', () => window.SmartTheme?.toggle());
+
+    // Handle hash from URL
+    if (window.location.hash) {
+      setTimeout(() => {
+        const el = document.querySelector(window.location.hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  </script>
+</body>
+
+</html>

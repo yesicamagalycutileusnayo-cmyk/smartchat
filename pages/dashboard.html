@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — SmartChat</title>
+  <meta name="description" content="Panel de control principal de SmartChat." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+<div class="dashboard-layout">
+
+  <!-- Overlay móvil -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ══════════════════════
+       SIDEBAR
+  ═══════════════════════════ -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Menú principal">
+    <a href="../index.html" class="sidebar-brand" aria-label="SmartChat inicio">
+      <div class="sidebar-logo-icon">💬</div>
+      <span class="sidebar-logo-text">SmartChat</span>
+    </a>
+
+    <nav class="sidebar-nav">
+      <span class="sidebar-section-label">Principal</span>
+
+      <a href="dashboard.html" class="sidebar-link active" id="nav-dashboard">
+        <div class="link-icon">🏠</div>
+        <span>Inicio</span>
+      </a>
+      <a href="chatbot.html" class="sidebar-link" id="nav-chatbot">
+        <div class="link-icon">💬</div>
+        <span>Chatbot</span>
+        <span class="badge-count">●</span>
+      </a>
+      <a href="documentacion.html" class="sidebar-link" id="nav-docs">
+        <div class="link-icon">📚</div>
+        <span>Documentación</span>
+      </a>
+
+      <span class="sidebar-section-label" style="margin-top:16px;">Configuración</span>
+      <button class="sidebar-link" id="themeToggleSide" data-action="theme" style="width:100%;background:none;border:none;cursor:pointer;">
+        <div class="link-icon">🌙</div>
+        <span>Tema oscuro</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">
+          <span class="user-avatar-letter">A</span>
+        </div>
+        <div class="user-info">
+          <div class="user-name" id="sidebarUserName">Administrador</div>
+          <div class="user-role" id="sidebarUserEmail">admin@demo.com</div>
+        </div>
+      </div>
+      <button class="logout-btn" id="logoutBtn" aria-label="Cerrar sesión">
+        <div class="link-icon">🚪</div>
+        <span>Cerrar sesión</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content" role="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">☰</button>
+        <div class="topbar-breadcrumb" aria-label="Ruta actual">
+          <span class="crumb">SmartChat</span>
+          <span class="sep">›</span>
+          <span class="crumb active">Dashboard</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-time" aria-live="polite">
+          🕐 <span id="liveClock">--:--:--</span>
+        </div>
+        <button class="topbar-icon-btn" data-action="theme" id="themeToggle" aria-label="Cambiar tema">🌙</button>
+        <button class="topbar-icon-btn" aria-label="Notificaciones">
+          🔔
+          <span class="notif-badge">3</span>
+        </button>
+        <div class="user-avatar" style="width:36px;height:36px;font-size:14px;" title="Usuario">
+          <span class="user-avatar-letter">A</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Body -->
+    <div class="dashboard-body">
+
+      <!-- Welcome -->
+      <div class="dashboard-welcome">
+        <h2>¡Bienvenido/a, <span class="highlight" id="welcomeName">Administrador</span>! 👋</h2>
+        <p>Aquí tienes un resumen de la actividad de SmartChat. Accede rápidamente al chatbot emocional.</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid" role="list" aria-label="Estadísticas del sistema">
+        <div class="stat-card" role="listitem">
+          <div class="stat-card-header">
+            <div class="stat-card-icon blue">💬</div>
+            <span class="stat-trend up">↑ 12%</span>
+          </div>
+          <div class="stat-value" data-count="1247" id="totalMsgs">0</div>
+          <div class="stat-label">Mensajes totales</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-card-header">
+            <div class="stat-card-icon cyan">👥</div>
+            <span class="stat-trend up">↑ 8%</span>
+          </div>
+          <div class="stat-value" data-count="89" id="activeUsers">0</div>
+          <div class="stat-label">Usuarios activos</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-card-header">
+            <div class="stat-card-icon green">🤖</div>
+            <span class="stat-trend up">Online</span>
+          </div>
+          <div class="stat-value" style="font-size:1.5rem;color:var(--success);">En línea</div>
+          <div class="stat-label">Estado del Bot</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-card-header">
+            <div class="stat-card-icon orange">⏱️</div>
+            <span class="stat-trend up">↑ 2%</span>
+          </div>
+          <div class="stat-value" data-count="99" data-suffix="%" id="uptime">0%</div>
+          <div class="stat-label">Uptime del sistema</div>
+        </div>
+      </div>
+
+      <!-- Main Grid -->
+      <div class="dashboard-grid">
+        <div>
+          <!-- Chat CTA -->
+          <a href="chatbot.html" class="chat-cta-card" id="chatCtaCard" aria-label="Ir al Chatbot SmartChat">
+            <div class="chat-cta-content">
+              <h3>🧠 Chatbot Emocional SmartChat</h3>
+              <p>Inicia una conversación con nuestro asistente de apoyo emocional. Disponible ahora mismo.</p>
+              <span class="btn btn-primary btn-sm" style="display:inline-flex;width:fit-content;">
+                💬 Iniciar conversación →
+              </span>
+            </div>
+            <div class="chat-cta-visual">🤖</div>
+          </a>
+
+          <!-- Activity Table -->
+          <div class="table-card">
+            <div class="table-header">
+              <h3>📋 Actividad Reciente</h3>
+              <span class="badge badge-primary">Simulado</span>
+            </div>
+            <table class="data-table" aria-label="Actividad reciente del sistema">
+              <thead>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Estado</th>
+                  <th>Mensajes</th>
+                  <th>Duración</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>user_042</td>
+                  <td><span class="badge badge-success">Tristeza</span></td>
+                  <td>12</td>
+                  <td>8 min</td>
+                  <td><span class="badge badge-accent">Positivo</span></td>
+                </tr>
+                <tr>
+                  <td>user_108</td>
+                  <td><span class="badge" style="background:#FEF3C7;color:#92400E;">Ansiedad</span></td>
+                  <td>7</td>
+                  <td>5 min</td>
+                  <td><span class="badge badge-accent">Positivo</span></td>
+                </tr>
+                <tr>
+                  <td>user_031</td>
+                  <td><span class="badge badge-primary">Estrés</span></td>
+                  <td>18</td>
+                  <td>15 min</td>
+                  <td><span class="badge badge-success">Excelente</span></td>
+                </tr>
+                <tr>
+                  <td>user_076</td>
+                  <td><span class="badge badge-accent">Motivación</span></td>
+                  <td>5</td>
+                  <td>3 min</td>
+                  <td><span class="badge badge-success">Positivo</span></td>
+                </tr>
+                <tr>
+                  <td>user_015</td>
+                  <td><span class="badge" style="background:#FEE2E2;color:#B91C1C;">Soledad</span></td>
+                  <td>23</td>
+                  <td>20 min</td>
+                  <td><span class="badge badge-accent">En proceso</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div class="side-panel">
+          <div class="quick-links-card">
+            <h3>⚡ Acceso Rápido</h3>
+            <a href="chatbot.html" class="quick-link-item" id="ql-chatbot">
+              <div class="ql-icon">💬</div>
+              <div>
+                <div style="font-size:0.875rem;font-weight:600;">Chatbot Emocional</div>
+                <div style="font-size:0.75rem;color:var(--text-subtle);">Iniciar conversación</div>
+              </div>
+            </a>
+            <a href="documentacion.html" class="quick-link-item" id="ql-docs">
+              <div class="ql-icon">📚</div>
+              <div>
+                <div style="font-size:0.875rem;font-weight:600;">Documentación</div>
+                <div style="font-size:0.75rem;color:var(--text-subtle);">Ver capítulos del informe</div>
+              </div>
+            </a>
+            <a href="../index.html" class="quick-link-item" id="ql-landing">
+              <div class="ql-icon">🏠</div>
+              <div>
+                <div style="font-size:0.875rem;font-weight:600;">Landing Page</div>
+                <div style="font-size:0.75rem;color:var(--text-subtle);">Ver página principal</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="status-card">
+            <h3>🛡️ Estado del Sistema</h3>
+            <div class="status-item">
+              <span class="item-label">Chatbot IA</span>
+              <span class="item-val">● Online</span>
+            </div>
+            <div class="status-item">
+              <span class="item-label">Base de datos</span>
+              <span class="item-val" style="color:var(--accent);">● Local</span>
+            </div>
+            <div class="status-item">
+              <span class="item-label">Sesión activa</span>
+              <span class="item-val">● Activa</span>
+            </div>
+            <div class="status-item">
+              <span class="item-label">Versión</span>
+              <span class="item-val" style="color:var(--text-muted);">v1.0.0</span>
+            </div>
+            <div class="status-item">
+              <span class="item-label">Modo</span>
+              <span class="item-val" style="color:var(--warning);">Demo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/auth.js"></script>
+<script src="../js/dashboard.js"></script>
+<script>
+  // Sync theme toggle in sidebar
+  document.getElementById('themeToggleSide')?.addEventListener('click', () => window.SmartTheme?.toggle());
+</script>
+</body>
+</html>
